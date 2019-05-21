@@ -20,7 +20,7 @@ class FavoritesServiceProvider extends ServiceProvider {
      * @return void
      */
     public function register() {
-        $this->app['command.favorites.clean'] = $this->app->share(function ($app) {
+        $this->app->singleton('command.favorites.clean', function ($app) {
             return new Console\CleanCommand();
         });
         $this->commands('command.favorites.clean');
